@@ -1,0 +1,79 @@
+﻿{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="page-wrapper" >
+    <div class="header"> 
+                  <h1 class="page-header">
+                      Tables Page
+                  </h1>
+                  <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Tables</a></li>
+                <li class="active">Data</li>
+              </ol> 
+                              
+  </div>
+  
+  
+      <div id="page-inner"> 
+         
+      <div class="row">
+          <div class="col-md-12">
+              <!-- Advanced Tables -->
+              <div class="card">
+                  <div class="card-action">
+                       Advanced Tables
+                  </div>
+                  <div class="card-content">
+                      <div class="table-responsive">
+                        <div class="search-box col-sm-2" >
+                            <i class="material-icons">&#xE8B6;</i>
+                            <form action='ad_search' method="POST">
+                                {% csrf_token %}
+                                <input type="search", placeholder="Search", name="searched">
+                            </form>
+                        </div>
+                          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                              <thead>
+                                  <tr>
+                                      <th>Firstname</th>
+                                      <th>Lastname</th>
+                                      <th>Email</th>
+                                      <th>Mobile</th>
+                                      <th>Status</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {% for customer in customers %}
+                                  <tr class="odd gradeX">
+                                      <td>{{customer.firstname}}</td>
+                                      <td>{{customer.lastname}}</td>
+                                      <td>{{customer.email}}</td>
+                                      <td>{{customer.number}}</td>
+                                      
+                                     {% if customer.is_active %}    
+                                     <td><a href="{% url 'block' customer.id %}"><button style="background-color: red; color: white;">Block</button></a></td>
+                                     {% else %}
+                                     <td><a href="{% url 'block' customer.id %}"><button style="background-color: green; color: white">Unblock</button></a></td>
+                            
+                                     
+                                      
+                                     
+
+
+                                  </tr>
+                                  {% endif %}
+                                  {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                      
+                  </div>
+              </div>
+              <!--End Advanced Tables -->
+          
+              <!--  end  Context Classes  -->
+          </div>
+      </div>
+{% endblock %}

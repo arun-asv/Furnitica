@@ -1,0 +1,20 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="form-group col-md-6" style="margin-left: 350px; padding-top: 90px; background-color: ivory;">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ from.media }}
+
+        {{ form.as_p }}
+        <br><br>
+
+        <button type="sumbit">Save</button><br><br>
+    </form>
+</div>
+
+{% endblock %}

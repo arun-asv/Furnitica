@@ -1,0 +1,17 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div id="page-wrapper" class="form-group">
+    <form action="newcategory" method="POST" enctype="multipart/form-data" style="margin-left: 50px; padding-top: 100px;">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <br>
+        <button type="sumbit">Add item</button><br><br>
+    </form>
+</div>
+
+{% endblock %}
