@@ -71,6 +71,7 @@
             <div id="mobile_search" class="d-flex">
                 <div id="mobile_search_content">
                     <form method="get" action="#">
+                        {% csrf_token %}
 
                         <input type="text" name="s" value="" placeholder="Search">
                         <button type="submit">
@@ -91,7 +92,7 @@
                                         <tr>
                                             <td class="product-image">
                                                 <a href="product-detail.html">
-                                                    <img src="img/product/5.jpg" alt="Product">
+                                                    <img src="{% static 'user/img/product/5.jpg' %}" alt="Product">
                                                 </a>
                                             </td>
                                             <td>
@@ -251,7 +252,7 @@
                                     </div>
                                 </li> -->
                                 <li>
-                                    <a href="contact.html" class="parent">Contact US</a>
+                                    <a href="#" class="parent">Contact US</a>
                                 </li>
                             </ul>
                         </div>
@@ -260,6 +261,7 @@
                     <!-- search and acount -->
                     <div class="col-sm-5 col-md-5 d-flex align-items-center justify-content-end" id="search_widget">
                         <form method="get" action="#">
+                            {% csrf_token %}
 
                             <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
                             <input type="text" name="s" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
@@ -283,7 +285,7 @@
                                 <div class="account-list-content">
 
                                     <div>
-                                        <a class="login" href="my_account" rel="nofollow" title="Log in to your customer account">
+                                        <a class="login" href="/my_account" rel="nofollow" title="Log in to your customer account">
                                             <i class="fa fa-cog"></i>
                                             <span>My Account</span>
                                         </a>
@@ -353,7 +355,7 @@
                             <div class="blockcart block-cart cart-preview tiva-toggle">
                                 <div class="header-cart tiva-toggle-btn">
                                     <!-- <span class="cart-products-count">1</span> -->
-                                    <a href="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                    <a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="badge" id = "cartcount">{{c}}</span></a></a>
                                 </div>
                                 <!-- <div class="dropdown-content">
                                     <div class="cart-content">
@@ -429,6 +431,7 @@
                     </div>
                 </div>
             </nav>
+            {% if cart_items %}
             <div class="container">
                 <div class="row">
                     <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
@@ -567,6 +570,12 @@
                     </div>
                 </div>
             </div>
+            {% else %}
+            <div class="col-md-6 ml-auto">
+                <label for="" style="font-size: larger;">Your cart is empty</label><br><br><br>
+                <a href="/home"><button class="btn bg-secondary">Continue Shopping</button></a>
+            </div>
+            {% endif %}
         </div>
     </div>
 
@@ -764,6 +773,8 @@
                 $("#sub" + pid).text(res.sub)
                 $("#count" + id).val(res.qty)
                 $("#total").text(res.total)
+                $('#cartcount').text(res.c)
+                    console.log(res.c)
             }
         })
     }),
@@ -785,6 +796,9 @@
                 $("#sub" + pid).text(res.sub)
                 $("#count" + id).val(res.qty)
                 $("#total").text(res.total)
+                $('#cartcount').text(res.c)
+                    console.log(res.c)
+                
 
             }
         })

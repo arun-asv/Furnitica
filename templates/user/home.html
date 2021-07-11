@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="{% static 'user/libs/nivo-slider/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'user/libs/font-material/css/material-design-iconic-font.min.css' %}">
     <link rel="stylesheet" href="{% static 'user/libs/slider-range/css/jslider.css' %}">
-    <link rel="stylesheet" href="{% static 'user/libs/owl-carousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'user/libs/owl-carousel/assets/owl.carousel.min.css' %}">    
     <link rel="stylesheet" href="{% static 'user/libs/slick-slider/css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'user/libs/slick-slider/css/slick-theme.css' %}">
 
@@ -172,7 +172,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="#" class="parent">OFFER STORE</a>
+                                    <a href="{% url 'offerstore' %}" class="parent">OFFER STORE</a>
                                     <div class="dropdown-menu">
                                         <!-- <ul>
                                             <li class="item">
@@ -252,7 +252,7 @@
                                     </div>
                                 </li> -->
                                 <li>
-                                    <a href="contact.html" class="parent">Contact US</a>
+                                    <a href="#" class="parent">Contact US</a>
                                 </li>
                             </ul>
                         </div>
@@ -261,6 +261,7 @@
                     <!-- search and acount -->
                     <div class="col-sm-5 col-md-5 d-flex align-items-center justify-content-end" id="search_widget">
                         <form method="get" action="#">
+                            {% csrf_token %}
 
                             <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
                             <input type="text" name="s" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
@@ -284,7 +285,7 @@
                                 <div class="account-list-content">
 
                                     <div>
-                                        <a class="login" href="my_account" rel="nofollow" title="Log in to your customer account">
+                                        <a class="login" href="/my_account" rel="nofollow" title="Log in to your customer account">
                                             <i class="fa fa-cog"></i>
                                             <span>My Account</span>
                                         </a>
@@ -354,7 +355,7 @@
                             <div class="blockcart block-cart cart-preview tiva-toggle">
                                 <div class="header-cart tiva-toggle-btn">
                                     <!-- <span class="cart-products-count">1</span> -->
-                                    <a href="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                    <a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="badge" id = "cartcount">{{c}}</span></a></a>
                                 </div>
                                 <!-- <div class="dropdown-content">
                                     <div class="cart-content">
@@ -450,7 +451,21 @@
                         <img class="card-img-top" src="{{product.image1.url}}" alt="Card image">
                         <div class="card-body">
                             <h4 class="card-title">{{product.product_name}}</h4>
-                            <p class="card-text">Rs.{{product.price}}</p>
+                            {% if product.offer > product.category.offer %}
+                            <span>{{product.offer}}% OFF</span>
+                            {% elif product.price == product.finalprice %}
+                            {% else %}
+                            <span>{{product.category.offer}}% OFF</span>
+                            {% endif %}
+                            
+                            {% if product.price == product.finalprice %}
+
+                            <p class="card-text">Rs.{{product.finalprice}}</p>
+
+                            {% else %}
+                            <p class="card-text">Rs.{{product.finalprice}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<del>Rs. {{product.price}}</del></p>
+                            {% endif %}
+
                             <a href="{% url 'productdetail' product.id %}" class="btn btn-primary">See Details</a>
                         </div>
                     </div>
@@ -552,11 +567,11 @@
                         <div class="container">
                             <div class="row">
                                 {% for category in categories %}
-                                <div class="card col-md-6" style="width:200px">
-                                    <img class="card-img-top" src="{{category.img.url}}" alt="Card image">
+                                <div class="card col-xs-12 col-sm-6 col-md-3 col-lg-3" style="width:200px">
+                                    <img style="width: 300px; height: 300px;" class="card-img-top" src="{{category.img.url}}" alt="Card image">
                                     <div class="card-body">
 
-                                        <a href="#" class="btn btn-primary">{{category.cat_name}}</a>
+                                        <a href="{% url 'categories' category.id %}" class="btn btn-primary">{{category.cat_name}}</a>
                                     </div>
 
                                 </div>
@@ -585,7 +600,7 @@
                         <div class="block">
                             <div class="block-content">
                                 <p class="logo-footer">
-                                    <img src="img/home/logo.png" alt="img">
+                                    <img src="{% static 'user/img/home/logo.png' %}" alt="img">
                                 </p>
                                 <p class="content-logo">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed
                                     do eiusmod tempor incididunt

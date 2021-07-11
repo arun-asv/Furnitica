@@ -43,7 +43,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'user/css/reponsive.css' %}">
 
     
-    <script src="jquery-3.5.1.min.js"></script>
+    <!-- <script src="jquery-3.5.1.min.js"></script> -->
 
     
 
@@ -472,7 +472,7 @@
                         
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 ml-auto">
 
-                            <form id="customer-form" action="signin" method="post">
+                            <form id="signinForm" action="signin" method="post">
                                 {% csrf_token %}
                                 <div>
                                     <input type="hidden" name="back" value="my-account">
@@ -484,6 +484,7 @@
                                         <input class="form-control" name="password" type="password"
                                             placeholder="Password">
                                     </div>
+                                   
 
 
                                     <!-- <div class="form-group no-gutters">
@@ -508,6 +509,15 @@
                                     </div>
                                 </div>
                             </form>
+                            <div>
+
+                            {% for message in messages %}
+                            <div>
+                                <h4>{{message}}</h4>
+                            </div>
+                            {% endfor %}
+
+                        </div>
 
                         </div>
 
@@ -684,15 +694,13 @@
     <script src="{% static 'user/libs/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'user/libs/nivo-slider/js/jquery.nivo.slider.js' %}"></script>
     <script src="{% static 'user/libs/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+
+    <script src="{% static 'user/js/main.js' %}"></script>
 
     <!-- Template JS -->
     <script src="{% static 'user/js/theme.js' %}"></script>
-    <script src="https://code.jquery.com/jquery-2.2.2.min.js"integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="crossorigin="anonymous"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
- <!-- Validator -->
- 
-    <script src="{% static 'user/js/main.js/' %}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 </body>
 

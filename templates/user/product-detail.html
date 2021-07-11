@@ -10,6 +10,7 @@
 
 
 <!-- product-detail06:46-->
+
 <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
@@ -34,7 +35,7 @@
     <link rel="stylesheet" href="{% static 'user/libs/nivo-slider/css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'user/libs/nivo-slider/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'user/libs/font-material/css/material-design-iconic-font.min.css' %}">
-    <link rel="stylesheet" href="{% static 'user/libs/slider-range/css/jslider.css' ">
+    <link rel="stylesheet" href="{% static 'user/libs/slider-range/css/jslider.css' %}">
     <link rel="stylesheet" href="{% static 'user/libs/owl-carousel/assets/owl.carousel.min.css' %}">
 
     <!-- Template CSS -->
@@ -56,7 +57,8 @@
                 <!-- logo -->
                 <div class="mobile-logo">
                     <a href="index-2.html">
-                        <img class="logo-mobile img-fluid" src="{% static 'user/img/home/logo-mobie.png' %}" alt="Prestashop_Furnitica">
+                        <img class="logo-mobile img-fluid" src="{% static 'user/img/home/logo-mobie.png' %}"
+                            alt="Prestashop_Furnitica">
                     </a>
                 </div>
 
@@ -250,7 +252,7 @@
                                     </div>
                                 </li> -->
                                 <li>
-                                    <a href="contact.html" class="parent">Contact US</a>
+                                    <a href="#" class="parent">Contact US</a>
                                 </li>
                             </ul>
                         </div>
@@ -259,9 +261,11 @@
                     <!-- search and acount -->
                     <div class="col-sm-5 col-md-5 d-flex align-items-center justify-content-end" id="search_widget">
                         <form method="get" action="#">
+                            {% csrf_token %}
 
                             <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                            <input type="text" name="s" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
+                            <input type="text" name="s" value="" placeholder="Search" class="ui-autocomplete-input"
+                                autocomplete="off">
                             <button type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -282,7 +286,8 @@
                                 <div class="account-list-content">
 
                                     <div>
-                                        <a class="login" href="my_account" rel="nofollow" title="Log in to your customer account">
+                                        <a class="login" href="my_account" rel="nofollow"
+                                            title="Log in to your customer account">
                                             <i class="fa fa-cog"></i>
                                             <span>My Account</span>
                                         </a>
@@ -311,7 +316,8 @@
                                             <span>Logout</span>
                                         </a>
                                     </div>
-                                    <div id="desktop_currency_selector" class="currency-selector groups-selector hidden-sm-down">
+                                    <div id="desktop_currency_selector"
+                                        class="currency-selector groups-selector hidden-sm-down">
                                         <!-- <ul class="list-inline">
                                             <li>
                                                 <a title="Euro" rel="nofollow" href="#">EUR</a>
@@ -321,7 +327,8 @@
                                             </li>
                                         </ul> -->
                                     </div>
-                                    <div id="desktop_language_selector" class="language-selector groups-selector hidden-sm-down">
+                                    <div id="desktop_language_selector"
+                                        class="language-selector groups-selector hidden-sm-down">
                                         <!-- <ul class="list-inline">
                                             <li class="list-inline-itemcurrent">
                                                 <a href="#">
@@ -352,7 +359,7 @@
                             <div class="blockcart block-cart cart-preview tiva-toggle">
                                 <div class="header-cart tiva-toggle-btn">
                                     <!-- <span class="cart-products-count">1</span> -->
-                                    <a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                    <a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="badge" id = "cartcount">{{c}}</span></a>
                                 </div>
                                 <!-- <div class="dropdown-content">
                                     <div class="cart-content">
@@ -405,119 +412,137 @@
         </div>
     </header>
 
-<div class="main-content">
-    <div id="wrapper-site">
-        <div id="content-wrapper">
-            <div id="main">
-                <div class="page-home">
+    <div class="main-content">
+        <div id="wrapper-site">
+            <div id="content-wrapper">
+                <div id="main">
+                    <div class="page-home">
 
-                    
-                    <div class="container">
-                        <div class="content">
-                            <div class="row">
-                                <div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
 
-                                    <!-- category -->
-                                
+                        <div class="container">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
 
-                                    <!-- best seller -->
-                                    
+                                        <!-- category -->
 
-                                    <!-- product tag -->
-                                    
-                                </div>
-                                <div class="col-sm-8 col-lg-9 col-md-9">
-                                    <div class="main-product-detail">
-                                        <h2></h2>
-                                        <div class="product-single row">
-                                            <div class="product-detail col-xs-12 col-md-5 col-sm-5">
-                                                <div class="page-content" id="content">
-                                                    <div class="images-container">
-                                                        <div class="js-qv-mask mask tab-content border">
-                                                            <div id="item1" class="tab-pane fade active in show">
-                                                                <img src="{{ product.image1.url }}" alt="img">
-                                                            </div>
-                                                            <div id="item2" class="tab-pane fade">
-                                                                <img src="{{ product.image2.url }}" alt="img">
-                                                            </div>
-                                                            <div id="item3" class="tab-pane fade">
-                                                                <img src="{{ product.image3.url }}" alt="img">
-                                                            </div>
-                                                            <!-- <div id="item4" class="tab-pane fade">
+
+                                        <!-- best seller -->
+
+
+                                        <!-- product tag -->
+
+                                    </div>
+                                    <div class="col-sm-8 col-lg-9 col-md-9">
+                                        <div class="main-product-detail">
+                                            <h2></h2>
+                                            <div class="product-single row">
+                                                <div class="product-detail col-xs-12 col-md-5 col-sm-5">
+                                                    <div class="page-content" id="content">
+                                                        <div class="images-container">
+                                                            <div class="js-qv-mask mask tab-content border">
+                                                                <div id="item1" class="tab-pane fade active in show">
+                                                                    <img src="{{ product.image1.url }}" alt="img">
+                                                                </div>
+                                                                <div id="item2" class="tab-pane fade">
+                                                                    <img src="{{ product.image2.url }}" alt="img">
+                                                                </div>
+                                                                <div id="item3" class="tab-pane fade">
+                                                                    <img src="{{ product.image3.url }}" alt="img">
+                                                                </div>
+                                                                <!-- <div id="item4" class="tab-pane fade">
                                                                 <img src="{% static 'user/img/product/5.jpg' %}" alt="img">
                                                             </div> -->
-                                                            <div class="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
-                                                                <i class="fa fa-expand"></i>
+                                                                <div class="layer hidden-sm-down" data-toggle="modal"
+                                                                    data-target="#product-modal">
+                                                                    <i class="fa fa-expand"></i>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <ul class="product-tab nav nav-tabs d-flex">
-                                                            <li class="active col">
-                                                                <a href="#item1" data-toggle="tab" aria-expanded="true" class="active show">
-                                                                    <img src="{{ product.image1.url }}" alt="img">
-                                                                </a>
-                                                            </li>
-                                                            <li class="col">
-                                                                <a href="#item2" data-toggle="tab">
-                                                                    <img src="{{ product.image2.url }}" alt="img">
-                                                                </a>
-                                                            </li>
-                                                            <li class="col">
-                                                                <a href="#item3" data-toggle="tab">
-                                                                    <img src="{{ product.image3.url }}" alt="img">
-                                                                </a>
-                                                            </li>
-                                                            <!-- <li class="col">
+                                                            <ul class="product-tab nav nav-tabs d-flex">
+                                                                <li class="active col">
+                                                                    <a href="#item1" data-toggle="tab"
+                                                                        aria-expanded="true" class="active show">
+                                                                        <img src="{{ product.image1.url }}" alt="img">
+                                                                    </a>
+                                                                </li>
+                                                                <li class="col">
+                                                                    <a href="#item2" data-toggle="tab">
+                                                                        <img src="{{ product.image2.url }}" alt="img">
+                                                                    </a>
+                                                                </li>
+                                                                <li class="col">
+                                                                    <a href="#item3" data-toggle="tab">
+                                                                        <img src="{{ product.image3.url }}" alt="img">
+                                                                    </a>
+                                                                </li>
+                                                                <!-- <li class="col">
                                                                 <a href="#item4" data-toggle="tab">
                                                                     <img src="{% static 'user/img/product/5.jpg' %}" alt="img">
                                                                 </a>
                                                             </li> -->
-                                                        </ul>
-                                                        <div class="modal fade" id="product-modal" role="dialog">
-                                                            <div class="modal-dialog">
+                                                            </ul>
+                                                            <div class="modal fade" id="product-modal" role="dialog">
+                                                                <div class="modal-dialog">
 
-                                                                <!-- Modal content-->
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <div class="modal-body">
-                                                                            <div class="product-detail">
-                                                                                <div>
-                                                                                    <div class="images-container">
-                                                                                        <div class="js-qv-mask mask tab-content">
-                                                                                            <div id="modal-item1" class="tab-pane fade active in show">
-                                                                                                <img src="{{ product.image1.url }}" alt="img">
-                                                                                            </div>
-                                                                                            <div id="modal-item2" class="tab-pane fade">
-                                                                                                <img src="{{ product.image2.url }}" alt="img">
-                                                                                            </div>
-                                                                                            <div id="modal-item3" class="tab-pane fade">
-                                                                                                <img src="{{ product.image3.url }}" alt="img">
-                                                                                            </div>
-                                                                                            <!-- <div id="modal-item4" class="tab-pane fade">
+                                                                    <!-- Modal content-->
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <div class="modal-body">
+                                                                                <div class="product-detail">
+                                                                                    <div>
+                                                                                        <div class="images-container">
+                                                                                            <div
+                                                                                                class="js-qv-mask mask tab-content">
+                                                                                                <div id="modal-item1"
+                                                                                                    class="tab-pane fade active in show">
+                                                                                                    <img src="{{ product.image1.url }}"
+                                                                                                        alt="img">
+                                                                                                </div>
+                                                                                                <div id="modal-item2"
+                                                                                                    class="tab-pane fade">
+                                                                                                    <img src="{{ product.image2.url }}"
+                                                                                                        alt="img">
+                                                                                                </div>
+                                                                                                <div id="modal-item3"
+                                                                                                    class="tab-pane fade">
+                                                                                                    <img src="{{ product.image3.url }}"
+                                                                                                        alt="img">
+                                                                                                </div>
+                                                                                                <!-- <div id="modal-item4" class="tab-pane fade">
                                                                                                 <img src="{% static 'user/img/product/5.jpg' %}" alt="img">
                                                                                             </div> -->
-                                                                                        </div>
-                                                                                        <ul class="product-tab nav nav-tabs">
-                                                                                            <li class="active">
-                                                                                                <a href="#modal-item1" data-toggle="tab" class=" active show">
-                                                                                                    <img src="{{ product.image1.url }}" alt="img">
-                                                                                                </a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#modal-item2" data-toggle="tab">
-                                                                                                    <img src="{{ product.image2.url }}" alt="img">
-                                                                                                </a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a href="#modal-item3" data-toggle="tab">
-                                                                                                    <img src="{{ product.image3.url }}" alt="img">
-                                                                                                </a>
-                                                                                            </li>
-                                                                                            <!-- <li>
+                                                                                            </div>
+                                                                                            <ul
+                                                                                                class="product-tab nav nav-tabs">
+                                                                                                <li class="active">
+                                                                                                    <a href="#modal-item1"
+                                                                                                        data-toggle="tab"
+                                                                                                        class=" active show">
+                                                                                                        <img src="{{ product.image1.url }}"
+                                                                                                            alt="img">
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#modal-item2"
+                                                                                                        data-toggle="tab">
+                                                                                                        <img src="{{ product.image2.url }}"
+                                                                                                            alt="img">
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#modal-item3"
+                                                                                                        data-toggle="tab">
+                                                                                                        <img src="{{ product.image3.url }}"
+                                                                                                            alt="img">
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <!-- <li>
                                                                                                 <a href="#modal-item4" data-toggle="tab">
                                                                                                     <img src="{% static 'user/img/product/5.jpg' %}" alt="img">
                                                                                                 </a>
                                                                                             </li> -->
-                                                                                        </ul>
+                                                                                            </ul>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -528,27 +553,44 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="product-info col-xs-12 col-md-7 col-sm-7">
-                                                <div class="detail-description">
-                                                    <div class="price-del">
-                                                        <span class="price">Rs. {{product.price}}</span>
-                                                        <span class="float-right">
-                                                            <span class="availb">Availability: </span>
-                                                            <span class="check">
-                                                                <i class="fa fa-check-square-o" aria-hidden="true"></i>IN STOCK</span>
-                                                        </span>
-                                                    </div>
-                                                    <p class="description">Proin gravida nibh vel velit auctor aliquet. Aenean lorem quis bibendum
-                                                        auctor, nisi elit consequat etiam non auctor.</p>
-                                                    <div class="option has-border d-lg-flex size-color">
-                                                    
-                                                    </div>
-                                                    <div class="has-border cart-area">
-                                                        <div class="product-quantity">
-                                                            <div class="qty">
-                                                                <div class="input-group">
-                                                                    <!-- <div class="quantity">
+                                                <div class="product-info col-xs-12 col-md-7 col-sm-7">
+                                                    <div class="detail-description">
+                                                        <div class="price-del">
+                                                            {% if product.offer > product.category.offer %}
+                                                            <span>{{product.offer}}% OFF</span>
+                                                            {% elif product.price == product.finalprice %}
+                                                            {% else %}
+                                                            <span>{{product.category.offer}}% OFF</span>
+                                                            {% endif %}
+
+                                                            {% if product.price == product.finalprice %}
+
+                                                            <p class="card-text">Rs.{{product.finalprice}}</p>
+
+                                                            {% else %}
+                                                            <p class="card-text">
+                                                                Rs.{{product.finalprice}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<del>Rs.
+                                                                    {{product.price}}</del></p>
+                                                            {% endif %}
+                                                            <span class="price">Rs. {{product.finalprice}}</span>
+                                                            <span class="float-right">
+                                                                <span class="availb">Availability: </span>
+                                                                <span class="check">
+                                                                    <i class="fa fa-check-square-o"
+                                                                        aria-hidden="true"></i>IN STOCK</span>
+                                                            </span>
+                                                        </div>
+                                                        <p class="description">Proin gravida nibh vel velit auctor
+                                                            aliquet. Aenean lorem quis bibendum
+                                                            auctor, nisi elit consequat etiam non auctor.</p>
+                                                        <div class="option has-border d-lg-flex size-color">
+
+                                                        </div>
+                                                        <div class="has-border cart-area">
+                                                            <div class="product-quantity">
+                                                                <div class="qty">
+                                                                    <div class="input-group">
+                                                                        <!-- <div class="quantity">
                                                                         <span class="control-label">QTY : </span>
                                                                         <input type="text" name="qty" id="quantity_wanted" value="1" class="input-group form-control">
 
@@ -561,16 +603,20 @@
                                                                             </button>
                                                                         </span>
                                                                     </div> -->
-                                                                    
-                                                                    <button class="btn btn-primary add-to-cart add-item" data-button-action="add-to-cart" id="addBtn" data-index="{{product.id}}" >
-                                                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                        <span>Add to cart</span>
-                                                                    </button>
+
+                                                                        <button
+                                                                            class="btn btn-primary add-to-cart add-item"
+                                                                            data-button-action="add-to-cart" id="addBtn"
+                                                                            data-index="{{product.id}}">
+                                                                            <i class="fa fa-shopping-cart"
+                                                                                aria-hidden="true"></i>
+                                                                            <span>Add to cart</span>
+                                                                        </button>
                                                                         <!-- <a class="addToWishlist" href="#">
                                                                             <i class="fa fa-heart" aria-hidden="true"></i>
                                                                         </a> -->
-                                                                   
-                                                                            <!-- <script>
+
+                                                                        <!-- <script>
                                                                                 function cart_add(product_id){
                                                                                     var data = {'product_id': product_id}
                                                                                 
@@ -589,17 +635,17 @@
                                                                         <a class="addToWishlist" href="#">
                                                                             <i class="fa fa-heart" aria-hidden="true"></i>
                                                                         </a> -->
-                                                                    </span>
+                                                                        </span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="clearfix"></div>
+                                                            <p class="product-minimal-quantity">
+                                                            </p>
                                                         </div>
-                                                        <div class="clearfix"></div>
-                                                        <p class="product-minimal-quantity">
-                                                        </p>
-                                                    </div>
-                                                    
-                                                    
-                                                    <!-- <div class="content"> -->
+
+
+                                                        <!-- <div class="content"> -->
                                                         <!-- <p>PRICE :
                                                             <span class="content2">
                                                                 <a href="#">e-02154</a>
@@ -615,7 +661,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <!-- <div class="related">
                                             <div class="title-tab-content  text-center">
                                                 <div class="title-product justify-content-start">
@@ -789,160 +835,160 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 
 
 
-<footer class="footer-one">
-    <div class="inner-footer">  
-        <div class="container">
-            <div class="footer-top col-lg-12 col-xs-12">
-                <div class="row">
-                    <div class="tiva-html col-lg-4 col-md-12 col-xs-12">
-                        <div class="block">
-                            <div class="block-content">
-                                <p class="logo-footer">
-                                    <img src="{% static 'user/img/home/logo.png' %}" alt="img">
-                                </p>
-                                <p class="content-logo">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed
-                                    do eiusmod tempor incididunt
-                                    ut labore et dolore magna aliqua. Ut enim ad minim
-                                </p>
-                            </div>
-                        </div>
-                        <div class="block">
-                            <div class="block-content">
-                                <ul>
-                                    <li>
-                                        <a href="#">About Us</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Reasons to shop</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">What our customers say</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Meet the teaml</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Contact our buyers</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="block">
-                            <div class="block-content">
-                                <p class="img-payment ">
-                                    <img class="img-fluid" src="{% static 'user/img/home/payment-footer.png' %}"
-                                        alt="img">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tiva-modules col-lg-4 col-md-6">
-                        <div class="block m-top">
-                            <div class="block-content">
-                                <div class="title-block">Newsletter</div>
-                                <div class="sub-title">Sign up to our newsletter to get the latest articles,
-                                    lookbooks voucher codes direct
-                                    to your inbox
-                                </div>
-                                <div class="block-newsletter">
-                                    <form action="#" method="post">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" name="email" value=""
-                                                placeholder="Enter Your Email">
-                                            <span class="input-group-btn">
-                                                <button class="effect-btn btn btn-secondary "
-                                                    name="submitNewsletter" type="submit">
-                                                    <span>subscribe</span>
-                                                </button>
-                                            </span>
-                                        </div>
-                                        <input type="hidden" name="action" value="0">
-                                    </form>
+    <footer class="footer-one">
+        <div class="inner-footer">
+            <div class="container">
+                <div class="footer-top col-lg-12 col-xs-12">
+                    <div class="row">
+                        <div class="tiva-html col-lg-4 col-md-12 col-xs-12">
+                            <div class="block">
+                                <div class="block-content">
+                                    <p class="logo-footer">
+                                        <img src="{% static 'user/img/home/logo.png' %}" alt="img">
+                                    </p>
+                                    <p class="content-logo">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed
+                                        do eiusmod tempor incididunt
+                                        ut labore et dolore magna aliqua. Ut enim ad minim
+                                    </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="block m-top1">
-                            <div class="block-content">
-                                <div class="social-content">
-                                    <div class="title-block">
-                                        Follow us on
-                                    </div>
-                                    <div id="social-block">
-                                        <div class="social">
-                                            <ul class="list-inline mb-0 justify-content-end">
-                                                <li class="list-inline-item mb-0">
-                                                    <a href="#" target="_blank">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item mb-0">
-                                                    <a href="#" target="_blank">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item mb-0">
-                                                    <a href="#" target="_blank">
-                                                        <i class="fa fa-google"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item mb-0">
-                                                    <a href="#" target="_blank">
-                                                        <i class="fa fa-instagram"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                            <div class="block">
+                                <div class="block-content">
+                                    <ul>
+                                        <li>
+                                            <a href="#">About Us</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Reasons to shop</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">What our customers say</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Meet the teaml</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Contact our buyers</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="block m-top1">
-                            <div class="block-content">
-                                <div class="payment-content">
-                                    <div class="title-block">
-                                        Payment accept
-                                    </div>
-                                    <div class="payment-image">
-                                        <img class="img-fluid" src="{% static 'user/img/home/payment.png' %}"
+                            <div class="block">
+                                <div class="block-content">
+                                    <p class="img-payment ">
+                                        <img class="img-fluid" src="{% static 'user/img/home/payment-footer.png' %}"
                                             alt="img">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tiva-modules col-lg-4 col-md-6">
+                            <div class="block m-top">
+                                <div class="block-content">
+                                    <div class="title-block">Newsletter</div>
+                                    <div class="sub-title">Sign up to our newsletter to get the latest articles,
+                                        lookbooks voucher codes direct
+                                        to your inbox
+                                    </div>
+                                    <div class="block-newsletter">
+                                        <form action="#" method="post">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="email" value=""
+                                                    placeholder="Enter Your Email">
+                                                <span class="input-group-btn">
+                                                    <button class="effect-btn btn btn-secondary "
+                                                        name="submitNewsletter" type="submit">
+                                                        <span>subscribe</span>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                            <input type="hidden" name="action" value="0">
+                                        </form>
                                     </div>
                                 </div>
-                                <!-- Popup newsletter -->
+                            </div>
+                            <div class="block m-top1">
+                                <div class="block-content">
+                                    <div class="social-content">
+                                        <div class="title-block">
+                                            Follow us on
+                                        </div>
+                                        <div id="social-block">
+                                            <div class="social">
+                                                <ul class="list-inline mb-0 justify-content-end">
+                                                    <li class="list-inline-item mb-0">
+                                                        <a href="#" target="_blank">
+                                                            <i class="fa fa-facebook"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item mb-0">
+                                                        <a href="#" target="_blank">
+                                                            <i class="fa fa-twitter"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item mb-0">
+                                                        <a href="#" target="_blank">
+                                                            <i class="fa fa-google"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item mb-0">
+                                                        <a href="#" target="_blank">
+                                                            <i class="fa fa-instagram"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block m-top1">
+                                <div class="block-content">
+                                    <div class="payment-content">
+                                        <div class="title-block">
+                                            Payment accept
+                                        </div>
+                                        <div class="payment-image">
+                                            <img class="img-fluid" src="{% static 'user/img/home/payment.png' %}"
+                                                alt="img">
+                                        </div>
+                                    </div>
+                                    <!-- Popup newsletter -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="tiva-copyright">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-lg-12 ">
-                    <span>
-                        <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
-                    </span>
+        <div id="tiva-copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="text-center col-lg-12 ">
+                        <span>
+                            <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
+    </footer>
+
+    <!-- back top top -->
+    <div class="back-to-top">
+        <a href="#">
+            <i class="fa fa-long-arrow-up"></i>
+        </a>
     </div>
-</footer>
-
-<!-- back top top -->
-<div class="back-to-top">
-    <a href="#">
-        <i class="fa fa-long-arrow-up"></i>
-    </a>
-</div>
 
 
-<!-- Page Loader -->
-<!-- <div id="page-preloader">
+    <!-- Page Loader -->
+    <!-- <div id="page-preloader">
     <div class="page-loading">
         <div class="dot"></div>
         <div class="dot"></div>
@@ -951,42 +997,44 @@
         <div class="dot"></div>
     </div>
 </div> -->
-<!-- Vendor JS -->
-<script src="{% static 'user/libs/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'userlibs/popper/popper.min.js' %"></script>
-<script src="{% static 'user/libs/bootstrap/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'user/libs/nivo-slider/js/jquery.nivo.slider.js' %}"></script>
-<script src="{% static 'user/libs/owl-carousel/owl.carousel.min.js' %}"></script>
+    <!-- Vendor JS -->
+    <script src="{% static 'user/libs/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'userlibs/popper/popper.min.js' %}"></script>
+    <script src="{% static 'user/libs/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'user/libs/nivo-slider/js/jquery.nivo.slider.js' %}"></script>
+    <script src="{% static 'user/libs/owl-carousel/owl.carousel.min.js' %}"></script>
 
-<!-- Template JS -->
-<script src="{% static 'user/js/theme.js' %}"></script>
-<!-- <script src="https://code.jquery.com/jquery-2.2.2.min.js"integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="crossorigin="anonymous"></script> -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- Template JS -->
+    <script src="{% static 'user/js/theme.js' %}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.2.2.min.js"integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="crossorigin="anonymous"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
 
-<script>
-    $(document).on("click", "#addBtn", function(e){
-        e.preventDefault()
-        var id =$(this).data("index")
-        console.log(id) 
-        $.ajax({
-            url:"{% url 'add_cart' %}",
-            type:'GET',
-            data:{
-                product_id:id,
+    <script>
+        $(document).on("click", "#addBtn", function (e) {
+            e.preventDefault()
+            var id = $(this).data("index")
+            console.log(id)
+            $.ajax({
+                url: "{% url 'add_cart' %}",
+                type: 'GET',
+                data: {
+                    product_id: id,
 
-            },
-            dataType:"json",
-            success: function(res){
-                alert("Product added")
-            }
+                },
+                dataType: "json",
+                success: function (res) {
+                    $('#cartcount').html(res.c)
+                    console.log(res.c)
+                }
+            })
+
         })
-
-    })
-</script>
+    </script>
 
 </body>
 
 
 
 </html>
-

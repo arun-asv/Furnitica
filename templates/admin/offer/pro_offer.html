@@ -1,0 +1,24 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="page-wrapper">
+
+
+
+
+
+    <div id="page-inner">
+
+        <body>
+            <form action="{% url 'offer_pro' product.id %}" method="POST">
+                {% csrf_token %}
+                <div class="col-md-3">
+                    <input type="number" placeholder="offer" name="offer" max="95">
+                    <button class="btn">Submit</button>
+                </div>
+            </form>
+        </body>
+    </div>
+</div>
+{% endblock %}

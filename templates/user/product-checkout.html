@@ -142,7 +142,7 @@
                                         <tr>
                                             <td class="product-image">
                                                 <a href="product-detail.html">
-                                                    <img src="img/product/5.jpg" alt="Product">
+                                                    <img src="{% static 'user/img/product/5.jpg' %}" alt="Product">
                                                 </a>
                                             </td>
                                             <td>
@@ -313,7 +313,8 @@
                         <form method="get" action="#">
 
                             <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                            <input type="text" name="s" value="" placeholder="Search" class="ui-autocomplete-input" autocomplete="off">
+                            <input type="text" name="s" value="" placeholder="Search" class="ui-autocomplete-input"
+                                autocomplete="off">
                             <button type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -334,7 +335,8 @@
                                 <div class="account-list-content">
 
                                     <div>
-                                        <a class="login" href="my_account" rel="nofollow" title="Log in to your customer account">
+                                        <a class="login" href="my_account" rel="nofollow"
+                                            title="Log in to your customer account">
                                             <i class="fa fa-cog"></i>
                                             <span>My Account</span>
                                         </a>
@@ -363,7 +365,8 @@
                                             <span>Logout</span>
                                         </a>
                                     </div>
-                                    <div id="desktop_currency_selector" class="currency-selector groups-selector hidden-sm-down">
+                                    <div id="desktop_currency_selector"
+                                        class="currency-selector groups-selector hidden-sm-down">
                                         <!-- <ul class="list-inline">
                                             <li>
                                                 <a title="Euro" rel="nofollow" href="#">EUR</a>
@@ -373,7 +376,8 @@
                                             </li>
                                         </ul> -->
                                     </div>
-                                    <div id="desktop_language_selector" class="language-selector groups-selector hidden-sm-down">
+                                    <div id="desktop_language_selector"
+                                        class="language-selector groups-selector hidden-sm-down">
                                         <!-- <ul class="list-inline">
                                             <li class="list-inline-itemcurrent">
                                                 <a href="#">
@@ -404,7 +408,7 @@
                             <div class="blockcart block-cart cart-preview tiva-toggle">
                                 <div class="header-cart tiva-toggle-btn">
                                     <!-- <span class="cart-products-count">1</span> -->
-                                    <a href="cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                                    <a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="badge" id = "cartcount">{{c}}</span></a></a>
                                 </div>
                                 <!-- <div class="dropdown-content">
                                     <div class="cart-content">
@@ -455,6 +459,7 @@
                 </div>
             </div>
         </div>
+
     </header>
 
     <div id="checkout" class="main-content">
@@ -483,35 +488,39 @@
 
             <div class="container">
                 <div class="row">
-                   
+
                     <div id="content-wrapper">
-                        <div class="row">
-                        {% for address in addresses %}
-                        
-                        <div class="card col-md-4" style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px;">
-                            <form action="place_order" id="my-form" method="POST" >
-                            {% csrf_token %}
-                            
-                                
-                                <input type="radio" class="mr-auto"  value="{{address.id}}" name="address">
-                            </form> 
-              
+                        <form action="place_order" id="my-form" method="POST">
+                            <div class="row">
+
+                                {% for address in addresses %}
+
+                                <div class="card col-md-4"
+                                    style="margin-top: 20px; margin-bottom: 20px; margin-left: 20px;">
+
+                                    {% csrf_token %}
+
+
+                                    <input  type="radio"  class="mr-auto" value="{{address.id}}" name="address" required    >
 
 
 
-                            <p>
-                                {{address.fullname}} <br>
-                                {{address.address1}}, {{address.address2}},
-                                {{address.pincode}}
-                                {{address.landmark}}, {{address.mobile}}
 
-                            </p>
 
-                        </div>
-                    
-                        {% endfor %}
-                        
-                    </div><br><br><br>
+                                    <p>
+                                        {{address.fullname}} <br>
+                                        {{address.address1}}, {{address.address2}},
+                                        {{address.pincode}}
+                                        {{address.landmark}}, {{address.mobile}}
+
+                                    </p>
+
+                                </div>
+
+                                {% endfor %}
+
+                            </div>
+                        </form><br><br><br>
 
 
                         <button id="myBtn" class="btn"
@@ -569,70 +578,70 @@
                                                     <label for="">Country</label>
                                                     {{form.country}}
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
-                                        <div class="float-left" style="margin-top: 10px" >
-                                            
+                                        <div class="float-left" style="margin-top: 10px">
+
                                             {{form.check}}
-                                            
+
                                             <label>Save this address</label>
                                         </div>
 
-                                    </div>
-                                    <div class="float-left" style="margin-top: 10px" >
-                                        
-                                        <button type="submit" class="btn" style="background-color: rgb(41, 38, 38); color: cornsilk;">Continue</button>
+                                </div>
+                                <div class="float-left" style="margin-top: 10px">
 
-                                    </div>
-                                        
-
-                                        
-
-                                    </form>
-
-
+                                    <button type="submit" class="btn"
+                                        style="background-color: rgb(41, 38, 38); color: cornsilk;">Continue</button>
 
                                 </div>
-                            </div>
 
+
+
+
+                                </form>
+
+
+
+                            </div>
                         </div>
 
-                        <div class="container">
-                            <div class="row">
-                                <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
-                                    <section id="main">
-                                        <div class="cart-grid row">
-                                            <div class="col-md-9 col-xs-12 check-info">
-                                                <!-- <h1 class="title-page">Shopping Cart</h1> -->
-                                                <div class="cart-container">
-                                                    <div class="cart-overview js-cart">
-                                                        <ul class="cart-items">
-                                                            <li class="cart-item">
-                                                                <div
-                                                                    class="product-line-grid row justify-content-between">
-                                                                    {% for cart_item in cart_items %}
-                                                                    <!--  product left content: image-->
+                    </div>
 
-                                                                    <div class="product-line-grid-left col-md-2">
-                                                                        <span class="product-image media-middle">
-                                                                            <a href="product-detail.html">
-                                                                                <img class="img-fluid"
-                                                                                    src="{{cart_item.product.image1.url}}"
-                                                                                    alt="">
-                                                                            </a>
-                                                                        </span>
+                    <div class="container">
+                        <div class="row">
+                            <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
+                                <section id="main">
+                                    <div class="cart-grid row">
+                                        <div class="col-md-9 col-xs-12 check-info">
+                                            <!-- <h1 class="title-page">Shopping Cart</h1> -->
+                                            <div class="cart-container">
+                                                <div class="cart-overview js-cart">
+                                                    <ul class="cart-items">
+                                                        <li class="cart-item">
+                                                            <div class="product-line-grid row justify-content-between">
+                                                                {% for cart_item in cart_items %}
+                                                                <!--  product left content: image-->
+
+                                                                <div class="product-line-grid-left col-md-2">
+                                                                    <span class="product-image media-middle">
+                                                                        <a href="product-detail.html">
+                                                                            <img class="img-fluid"
+                                                                                src="{{cart_item.product.image1.url}}"
+                                                                                alt="">
+                                                                        </a>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="product-line-grid-body col-md-6">
+                                                                    <div class="product-line-info">
+                                                                        <a class="label" href="product-detail.html"
+                                                                            data-id_customization="0">{{cart_item.product.product_name}}</a>
                                                                     </div>
-                                                                    <div class="product-line-grid-body col-md-6">
-                                                                        <div class="product-line-info">
-                                                                            <a class="label" href="product-detail.html"
-                                                                                data-id_customization="0">{{cart_item.product.product_name}}</a>
-                                                                        </div>
-                                                                        <div class="product-line-info product-price">
-                                                                            <span class="value">Rs.
-                                                                                {{cart_item.product.price}}</span>
-                                                                        </div>
-                                                                        <!-- <div class="product-line-info">
+                                                                    <div class="product-line-info product-price">
+                                                                        <span class="value">Rs.
+                                                                            {{cart_item.product.price}}</span>
+                                                                    </div>
+                                                                    <!-- <div class="product-line-info">
                                                                                 <span class="label-atrr">Size:</span>
                                                                                 <span class="value">S</span>
                                                                             </div>
@@ -640,106 +649,113 @@
                                                                                 <span class="label-atrr">Color:</span>
                                                                                 <span class="value">Blue</span>
                                                                             </div> -->
-                                                                    </div>
-                                                                    <div
-                                                                        class="product-line-grid-right text-center product-line-actions col-md-4">
-                                                                        <div class="row">
-                                                                            <div class="col-md-5 col qty">
-                                                                                <div class="label">Qty:</div>
+                                                                </div>
+                                                                <div
+                                                                    class="product-line-grid-right text-center product-line-actions col-md-4">
+                                                                    <div class="row">
+                                                                        <div class="col-md-5 col qty">
+                                                                            <div class="label">Qty:</div>
 
-                                                                                <label>{{cart_item.quantity}}</label>
+                                                                            <label>{{cart_item.quantity}}</label>
 
-                                                                               
 
-                                                                            </div>
-                                                                            <div class="col-md-5 col price">
-                                                                                <div class="label">Total:</div>
-                                                                                <div class="product-price total">
-                                                                                    Rs. {{cart_item.sub_total}}
-                                                                                </div>
-                                                                            </div>
-                                                                            <div
-                                                                                class="col-md-2 col text-xs-right align-self-end">
-                                                                                
+
+                                                                        </div>
+                                                                        <div class="col-md-5 col price">
+                                                                            <div class="label">Total:</div>
+                                                                            <div class="product-price total">
+                                                                                Rs. {{cart_item.sub_total}}
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                    {% endfor %}
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <!-- <a href="checkout" class="continue btn btn-primary pull-xs-right">
-                                                    Continue
-                                                </a> -->
-                                            </div>
-                                            <div class="cart-grid-right col-xs-12 col-lg-3">
-                                                <div class="cart-summary">
-                                                    <div class="cart-detailed-totals">
-                                                        <div class="cart-summary-products">
-                                                            <div class="summary-label"></div>
-                                                        </div>
-                                                        <div class="cart-summary-line" id="cart-subtotal-products">
-                                                            <span class="label js-subtotal">
-                                                                Total products:
-                                                            </span>
-                                                            <span class="value">{{total}}</span>
-                                                        </div>
-                                                        <div class="cart-summary-line" id="cart-subtotal-shipping">
-                                                            <span class="label">
-                                                                Total Shipping:
-                                                            </span>
-                                                            <span class="value">Free</span>
-                                                            <div>
-                                                                <small class="value"></small>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cart-summary-line cart-total">
-                                                            <span class="label">Total:</span>
-                                                            <span class="value">{{total}}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                                        <div
+                                                                            class="col-md-2 col text-xs-right align-self-end">
 
-                                                <div id="block-reassurance">
-                                                    <ul>
-                                                        <li>
-                                                            <div class="block-reassurance-item">
-                                                                <img src="{% static 'user/img/product/check1.png' %}"
-                                                                    alt="Security policy (edit with Customer reassurance module)">
-                                                                <span>Security policy (edit with Customer reassurance
-                                                                    module)</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                {% endfor %}
                                                             </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="block-reassurance-item">
-                                                                <img src="{% static 'user/img/product/check2.png' %}"
-                                                                    alt="Delivery policy (edit with Customer reassurance module)">
-                                                                <span>Delivery policy (edit with Customer reassurance
-                                                                    module)</span>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div class="block-reassurance-item">
-                                                                <button class="btn" type="submit" form="my-form"
-                                                                     style="width: 100%; background-color: orangered;">Place
-                                                                    Order</button>
-                                                            </div>
-                                                           
                                                         </li>
                                                     </ul>
                                                 </div>
-
                                             </div>
+                                           
                                         </div>
-                                    </section>
+                                        <div class="cart-grid-right col-xs-12 col-lg-3">
+                                            <div class="cart-summary">
+                                                <div class="cart-detailed-totals">
+                                                    <div class="cart-summary-products">
+                                                        <div class="summary-label"></div>
+                                                    </div>
+                                                    
+                                                    <div class="cart-summary-line" id="cart-subtotal-shipping">
+                                                        <span class="label">
+                                                            Total Shipping:
+                                                        </span>
+                                                        <span class="value">Free</span>
+                                                        <div>
+                                                            <small class="value"></small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cart-summary-line cart-total">
+                                                        <span class="label">Total:</span>
+                                                        <span class="value" id="total">{{total}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-            
+                                            <div id="block-reassurance">
+                                                <ul>
+                                                    <li>
+                                                        <div class="block-reassurance-item">
+                                                            <img src="{% static 'user/img/product/check1.png' %}"
+                                                                alt="Security policy (edit with Customer reassurance module)">
+                                                            <span>Security policy (edit with Customer reassurance
+                                                                module)</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="block-reassurance-item">
+                                                            <img src="{% static 'user/img/product/check2.png' %}"
+                                                                alt="Delivery policy (edit with Customer reassurance module)">
+                                                            <span>Delivery policy (edit with Customer reassurance
+                                                                module)</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="block-reassurance-item">
+                                                            <input class="text-center" id="code" style="width: 100%; height: 30px;" type="text" name="" id="" placeholder="Coupon code"><br><br>
+                                                            <button class="btn" type="submit" id="coupon" value="{{total}}"
+                                                                style="width: 100%; background-color: rgb(6, 103, 158);">Apply Coupon</button>
+                                                        </div>
+                                                    {% for message in messages %}
+                                                        <div>
+                                                            <h2>{{message}}</h2>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </li>
+                                                    <li>
+                                                        <div class="block-reassurance-item">
+                                                            <button class="btn" type="submit" form="my-form"
+                                                                style="width: 100%; background-color: orangered;">Place
+                                                                Order</button>
+                                                        </div>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </section>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <script src="{% static 'user/libs/jquery/jquery.min.js' %}"></script>
                 <script>
                     // Get the modal
                     var modal = document.getElementById("myModal");
@@ -766,5 +782,31 @@
                             modal.style.display = "none";
                         }
                     }
+                </script>
+                <script>
+                    $(document).on("click","#coupon",function(){
+                        var total=$(this).val()
+                        var code=$("#code").val()
+                        
+                        console.log(total)
+                        console.log(code)
+                        
+                        $.ajax({
+                            url:"{% url 'apply_coupon' %}",
+                            type:'GET',
+                            data:{
+                                ccode:code, 
+                                gtotal:total            
+                        },
+                        dataType:'json',
+                        success:function(res){
+                            console.log(res.gtotal)
+                            $("#total").text(res.gtotal)
+                            
+                            
+                        }
+                    })
+                })
+
                 </script>
 </body>

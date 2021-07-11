@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [path('', views.landing, name= 'landing'),
                 path('home', views.home, name= 'home'),
+                path('categories/<id>', views.categories, name='categories'),
                 path('register/', views.register, name = 'register'),
                 path('login', views.login, name = 'login'),
                 path('sendotp', views.sendotp, name = 'sendotp'),
@@ -16,6 +17,7 @@ urlpatterns = [path('', views.landing, name= 'landing'),
                 path('remove_cart', views.remove_cart, name='remove_cart'),
                 path('remove_cart_item/<id>', views.remove_cart_item, name= 'remove_cart_item'),
                 path('my_account', views.my_account, name='my_account'),
+                path('editprofile/<id>', views.editprofile, name='editprofile'),
                 path('signin', views.signin, name='signin'),
                 path('checkout', views.checkout, name="checkout"),
                 path('address', views.address, name = 'address'),
@@ -24,6 +26,9 @@ urlpatterns = [path('', views.landing, name= 'landing'),
                 path('successrazorpay', views.successrazorpay, name='successrazorpay'),
                 path('successpaypal', views.successpaypal, name='successpaypal'),
                 path('order_status/', views.order_status, name='order_status'),
+                path('apply_coupon', views.apply_coupon, name='apply_coupon'),
+                path('saveprofile', views.saveprofile, name='saveprofile'),
+                path('offerstore', views.offerstore, name='offerstore'),
 
                 
                 

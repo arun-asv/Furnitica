@@ -4,6 +4,8 @@ from twilio.rest import Client
 import random
 from store.models import Product
 import uuid
+from django.utils import timezone
+
 
 
 # Create your models here.
@@ -16,6 +18,7 @@ class Customer(models.Model):
     number = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     username = models.CharField(max_length=100)
+    image = models.ImageField(upload_to = 'pics/pro', null=True)
     
     
     
@@ -34,33 +37,6 @@ class Otp(models.Model):
 
 
 
-
-# Find your Account SID and Auth Token at twilio.com/console
-# and set the environment variables. See http://twil.io/secure
-    # def createotp(self):
-    #     account_sid = 'ACff1e64ebbdeee1666cee5ab643b03f4e'
-    #     auth_token = '75a5794ed0b273d45250f895de4018e6'
-    #     client = Client(account_sid, auth_token)
-
-    #     verification = client.verify \
-    #                     .services('VAa72b019f75b36a4167324c9640c94ada') \
-    #                     .verifications \
-    #                     .create(to='+91'+str(self.num), channel='sms')
-
-    #     print(verification.status)
-    
-    # def checkotp(self):
-    #     account_sid = 'ACff1e64ebbdeee1666cee5ab643b03f4e'
-    #     auth_token = '75a5794ed0b273d45250f895de4018e6'
-    #     client = Client(account_sid, auth_token)
-
-    #     verification_check = client.verify \
-    #                        .services('VAa72b019f75b36a4167324c9640c94ada') \
-    #                        .verification_checks \
-    #                        .create(to='+91'+(self.num), code= self.vnum)
-
-    #     print(verification_check.status)
-
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(Customer, on_delete=CASCADE)
@@ -68,8 +44,9 @@ class CartItem(models.Model):
     is_active = models.BooleanField(default=True)
     
     
+    
     def sub_total(self):
-        return self.product.price * self.quantity
+        return self.product.finalprice * self.quantity
 
     def __str__(self):
         return self.product.product_name
@@ -91,6 +68,16 @@ class Address(models.Model):
         return self.fullname
 
 
+class Coupon(models.Model):
+    code = models.CharField(max_length=20)
+    dis = models.IntegerField(default=0)
+    status = models.BooleanField(default=False) 
+    date_posted = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return self.code
+
+
 class Order(models.Model):
     STATUS = (
         ('Placed', 'Placed',),
@@ -102,7 +89,7 @@ class Order(models.Model):
 
     
     user = models.ForeignKey(Customer, on_delete=CASCADE)
-    item = models.ForeignKey(CartItem, on_delete=CASCADE)
+    item = models.ForeignKey(Product, on_delete=CASCADE)
     order_uuid = models.UUIDField(default=uuid.uuid4, unique=True, db_index=True, editable=False)
     price = models.IntegerField()
     address = models.ForeignKey(Address, on_delete=CASCADE, null=True)
@@ -110,6 +97,7 @@ class Order(models.Model):
     start_time = models.TimeField(auto_now_add=True)
     status = models.CharField(choices= STATUS, max_length=50, default='PLACED')
     pay_method = models.CharField(max_length=100, default='COD')
+    coupon = models.ForeignKey(Coupon, on_delete=CASCADE, null=True)
 
 
     
@@ -117,6 +105,13 @@ class Order(models.Model):
     def __str__(self):
         return self.status
 
+
+class Cart_count(models.Model):
+    user = models.ForeignKey(Customer, on_delete=CASCADE)
+    count = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.count
     
 
     

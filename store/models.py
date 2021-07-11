@@ -8,7 +8,8 @@ from django.utils import timezone
 
 class Category(models.Model):
     cat_name = models.CharField(max_length=200)
-    img = models.ImageField(upload_to = 'pics/category')
+    img = models.ImageField(upload_to = 'pics/profile')
+    offer = models.IntegerField(default=0)
 
     def __str__(self):
         return self.cat_name
@@ -21,7 +22,10 @@ class Product(models.Model):
     image3 = models.ImageField(upload_to = 'pics/products')
     category = models.ForeignKey(Category, on_delete=CASCADE)
     price = models.IntegerField()
+    offer = models.IntegerField(default=0)
+    finalprice = models.IntegerField(default=0)
     date_posted = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.product_name
+        

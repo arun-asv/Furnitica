@@ -20,6 +20,8 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="{% static 'admin/js/Lightweight-Chart/cssCharts.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
     
 </head>
 
@@ -33,13 +35,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand waves-effect waves-dark" href="index.html"><i class="large material-icons">track_changes</i> <strong>furnitica</strong></a>
+                <a class="navbar-brand waves-effect waves-dark" href=""><i class="large material-icons">track_changes</i> <strong>furnitica</strong></a>
 				
 		<div id="sideNav" href=""><i class="material-icons dp48">toc</i></div>
             </div>
 
             <ul class="nav navbar-top-links navbar-right"> 
-				  <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>admin</b> <i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-button waves-effect waves-dark" href="#!" data-activates="dropdown1"><i class="fa fa-user fa-fw"></i> <b>admin</b> <i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </nav>
 		<!-- Dropdown Structure -->
@@ -53,10 +55,10 @@
 			<ul class="nav" id="main-menu">
 
 				<li>
-					<a class="waves-effect waves-dark" href="ad_home"><i class="fa fa-desktop"></i> Dashboard</a>
+					<a href="{% url 'ad_home' %}" class="waves-effect waves-dark"><i class="fa fa-desktop"></i> Dashboard</a>
 				</li>
 				<li>
-					<a href="{% url 'usermanage' %}" class="waves-effect waves-dark"><i class="fa fa-user"></i>User Management</a>
+					<a href="{% url 'usermanage' %}" class="waves-effect waves-dark"><i class="fa fa-table"></i>User Management</a>
 				</li>
 				<li>
 					<a href="{% url 'productmanage' %}" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i>Product Management</a>
@@ -68,11 +70,14 @@
 				<li>
 					<a href="{% url 'ordermanage' %}" class="waves-effect waves-dark"><i class="fa fa-table"></i>Order Management</a>
 				</li>
-				<li>
-					<a href="{% url 'offermanage' %}" class="waves-effect waves-dark"><i class="fa fa-edit"></i>Offer Management</a>
+                <li>
+					<a href="{% url 'ad_offer' %}" class="waves-effect waves-dark"><i class="fa fa-table"></i>Offer Management</a>
 				</li>
-					</ul>
+                <li>
+					<a href="{% url 'report' %}" class="waves-effect waves-dark"><i class="fa fa-table"></i>Reports</a>
 				</li>
+		
+		
 			</ul>
 
 		</div>
@@ -88,7 +93,7 @@
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="{% static 'admin/js/jquery-1.10.2.js' %}"></script>
+   <!-- <script src="{% static 'admin/js/jquery-1.10.2.js' %}"></script> -->
 	
 	<!-- Bootstrap Js -->
     <script src="{% static 'admin/js/bootstrap.min.js' %}"></script>
@@ -110,6 +115,8 @@
 	
     <!-- Custom Js -->
     <script src="{% static 'admin/js/custom-scripts.js' %}"></script> 
+
+    
  
 
 </body>

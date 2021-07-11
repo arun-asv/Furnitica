@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+
+                        <form style="border: 1px solid" method="POST" enctype="multipart/form-data" id="post-form"
+                            action="addcoupon">
+                            {% csrf_token %}
+                            <fieldset>
+                                <div class="row ">
+                                    <div style="background-color: rgb(48, 61, 82); color: white; padding: 30px;">
+
+                                        <div style="margin-bottom: 10px; color: white; width: 200px; ">
+                                            <label>Coupon code</label>
+                                            {{form.code}}
+                                        </div>
+
+                                        <div style="margin-bottom: 10px; width: 150px">
+                                            <label>Offer</label>
+                                            {{form.dis}}
+                                        </div>
+                                        <div style="margin-bottom: 10px; width: 150px">
+                                            <label>Status</label>
+                                            {{form.status}}
+                                        </div>
+                                        
+                                        <div style="margin-bottom: 10px;">
+
+                                            {{form.media}}
+                                        </div>
+                                        <button type="submit" class="btn">Submit</button>
+                                </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -11,16 +11,24 @@ path('ad_category', views.ad_category, name = 'categorymanage'),
 path('newcategory', views.newcategory, name = 'newcategory'),
 path('editcategory/<id>', views.editcategory, name = 'editcategory'),
 path('deletecategory/<id>', views.deletecategory, name = 'deletecategory'),
-path('delete_cat/<id>', views.delete_cat, name='delete_cat'),
-path('nodeletecat/<id>', views.nodelete_cat, name="nodeletecat"),
 path('newproduct', views.newproduct, name='newproduct'),
 path('editproduct/<id>', views.editproduct, name='editproduct'),
 path('deleteproduct/<id>', views.deleteproduct, name = 'deleteproduct'),
 path('block/<id>', views.block, name = 'block'),
 path('ad_home', views.ad_home, name = 'ad_home'),
-path('ad_search', views.ad_search, name='ad_search'),
+# path('ad_search', views.ad_search, name='ad_search'),
 path('admin_order_status/', views.admin_order_status, name='admin_order_status'),
-path('ad_offer', views.ad_offer, name='offermanage'),
+path('ad_offer', views.ad_offer, name='ad_offer'),
+path('addcoupon', views.addcoupon, name='addcoupon'),
+path('deletecoupon/<id>', views.deletecoupon, name='deletecoupon'),
+path('offer_pro/<id>', views.offer_pro, name='offer_pro'),
+path('offer_cat/<id>', views.offer_cat, name='offer_cat'),
+path('report', views.report, name='report'),
+path('pro_offer/<id>', views.pro_offer, name='pro_offer'),
+path('cat_offer/<id>', views.cat_offer, name='cat_offer'),
+path('cancel_order/<id>', views.cancel_order, name="cancel_order")
+
+
 
 
 
