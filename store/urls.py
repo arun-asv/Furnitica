@@ -26,7 +26,8 @@ path('offer_cat/<id>', views.offer_cat, name='offer_cat'),
 path('report', views.report, name='report'),
 path('pro_offer/<id>', views.pro_offer, name='pro_offer'),
 path('cat_offer/<id>', views.cat_offer, name='cat_offer'),
-path('cancel_order/<id>', views.cancel_order, name="cancel_order")
+path('cancel_order/<id>', views.cancel_order, name="cancel_order"),
+path('adminlogout', views.adminlogout, name='adminlogout'),
 
 
 

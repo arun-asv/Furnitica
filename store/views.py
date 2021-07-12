@@ -6,6 +6,7 @@ from .forms import CategoryForm, ProductForm
 from django.http import HttpResponse, JsonResponse
 from customer.models import Customer, Order
 from django.contrib.auth.models import User, auth
+from django.contrib import messages
 
 # Create your views here.
 def ad_login(request):
@@ -34,6 +35,7 @@ def ad_home (request):
                 
                 
             else:
+                messages.info(request, 'Invalid Credentials')
                 return redirect('ad_login')
     elif request.user.is_authenticated:
         return render (request, 'admin/index.html', {'users': users, 'orders': orders, 'order_placed': order_placed, 'order_shipped': order_shipped, 'order_delivered': order_delivered, 'total': total})
@@ -276,3 +278,5 @@ def report(request,total=0, quantity=0, cart_items=None):
         return redirect('ad_login')
 
 
+def adminlogout(request):
+        return redirect('ad_login')
