@@ -8,7 +8,6 @@ from .forms import AddressForm
 from .models import Address, Coupon
 import razorpay
 from twilio.rest import Client
-from decouple import config
 
 # Create your views here.
 
@@ -87,8 +86,8 @@ def sendotp(request):
                 request.session['username'] = user.username
                 request.session['otp'] = num
                 print('working')
-                account_sid = config ('account_sid')
-                auth_token = config ('auth_token')
+                account_sid = ('AC6d38580f9777da660b0aa694585250ff')
+                auth_token = ('9970f085b20acf924e7ef584ac471b42')
                 client = Client(account_sid, auth_token)
 
                 verification = client.verify \
