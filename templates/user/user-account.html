@@ -2082,7 +2082,7 @@
 </head>
 
 <body class="user-register blog">
-  <header>
+  <header style="position: fixed; z-index: 1000; width: 100%; background-color: hsl(0, 0%, 100%)">
 
     <!-- header left mobie -->
     <div class="header-mobile d-md-none">
@@ -2447,7 +2447,7 @@
   </header>
 
   <body>
-    <div class="main-content">
+    <div class="main-content" style="margin-bottom: 20px;">
       <!-- Top navbar -->
       <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
@@ -2511,14 +2511,14 @@
       </nav>
       <!-- Header -->
       <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-        style="min-height: 600px; background-image: url(https://lh4.googleusercontent.com/proxy/Kkf_aQxrnoGtndIo8YHLUJfhgqyQUtMoNaa9TUCnGCKyQszJg1Jq8KYh4QinF0XZKu-x34SDzuYt68qAd4zphO_7rsfWJ3vCH-U1AnmkD5Lb1M-Yo7_rpBA5fFaA5ADooLddLtIiFxyYFnKeB-C6t_xe9EFl1c9pO8wRMwkAmqE1=s0-d); background-size: cover; background-position: center top;">
+        style="min-height: 600px; background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fdepositphotos.com%2F4446869%2Fstock-photo-white-flower-background.html&psig=AOvVaw2BjlNxTn2nkZcFMmOEFwA6&ust=1626169979809000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCJDxurKh3fECFQAAAAAdAAAAABAD); background-size: cover; background-position: center top;">
         <!-- Mask -->
         <span class="mask opacity-8"></span>
         <!-- Header container -->
         <div class="container-fluid d-flex align-items-center">
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <h1 class="display-2 text-white">Hello, {{user.firstname}}</h1>
+              <h1 class="display-2 text-white;" style="color: black; !important">Hello, {{user.firstname}}</h1>
 
               
             </div>
@@ -2526,7 +2526,7 @@
         </div>
       </div>
       <!-- Page content -->
-      <div class="container-fluid mt--7">
+      <div class="container-fluid mt--7" style="margin-top: -240px !important">
         <div class="row">
           <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
             <div class="card card-profile shadow">

@@ -44,7 +44,7 @@
 </head>
 
 <body class="user-register blog">
-    <header>
+    <header style="position: fixed; z-index: 1000; width: 100%; background-color: hsl(0, 0%, 100%)">
 
         <!-- header left mobie -->
         <div class="header-mobile d-md-none">
@@ -146,7 +146,7 @@
                     </div>
 
                     <!-- menu -->
-                    <div class="col-sm-5 col-md-5 align-items-center justify-content-center navbar-expand-md main-menu">
+                    <div class="col-sm-5 col-md-5 align-items-center justify-content-center navbar-expand-md main-menu" style="position: sticky; top: 0;">
                         <div class="menu navbar collapse navbar-collapse">
                             <ul class="menu-top navbar-nav">
                                 <li>
@@ -417,7 +417,7 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="margin-bottom: 50px; height: 600px;">
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="{% static 'user/img/home/home1-banner1.jpg' %}" alt="First slide">
                 </div>

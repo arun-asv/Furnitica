@@ -17,9 +17,9 @@ class Category(models.Model):
 
 class Product(models.Model):
     product_name = models.CharField(max_length=200)
-    image1 = models.ImageField(upload_to = 'pics/products')
-    image2 = models.ImageField(upload_to = 'pics/products')
-    image3 = models.ImageField(upload_to = 'pics/products')
+    image1 = models.ImageField(upload_to = 'pics/products', blank=True)
+    image2 = models.ImageField(upload_to = 'pics/products', blank=True)
+    image3 = models.ImageField(upload_to = 'pics/products', blank=True)
     category = models.ForeignKey(Category, on_delete=CASCADE)
     price = models.IntegerField()
     offer = models.IntegerField(default=0)
