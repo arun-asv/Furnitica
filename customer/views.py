@@ -110,8 +110,8 @@ def verify (request, num):
         num = request.session['otp']
         uname = request.session['username']
         user = Customer.objects.get(username=uname)
-        account_sid = 'AC6d38580f9777da660b0aa694585250ff'
-        auth_token = '9970f085b20acf924e7ef584ac471b42'
+        account_sid = config ('account_sid')
+        auth_token = config ('auth_token')
         client = Client(account_sid, auth_token)
 
         verification_check = client.verify \
@@ -481,9 +481,8 @@ def place_order(request, total =0, quantity = 0):
     request.session['payment_method'] = 'RazorPay'
     request.session['pay_method'] ='PayPal'
     order_currency = 'INR'
-    client = razorpay.Client(auth=("rzp_test_YlEKO49r8wFNDh", "2Lhy5RpKcilXX7UceBvSkPUE"))
-    payment = client.order.create({'amount': amount, 'currency': 'INR',
-                                       'payment_capture': '1'})  
+    client = razorpay.Client(auth=("rzp_test_YS9KGBsCdyaNSK", "u9bjULWSOt8QTOgvTAWhhDcJ"))
+    payment = client.order.create({'amount': amount, 'currency': 'INR', 'payment_capture': '1'})  
             
     context = {
     'delivery_address': delivery_address,

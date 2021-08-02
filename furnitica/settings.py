@@ -81,10 +81,10 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'furnitica',
-        'USER': 'postgres',
-        'PASSWORD': '1234qwer,.',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
+        'USER': 'furniticauser',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
